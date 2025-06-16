@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <button id="open-modal-btn">Создать задачу</button>
+            <div class="filters">
+                <select id="filter-status">
+                    <option value="">Все статусы</option>
+                    <option value="В процессе">В процессе</option>
+                    <option value="Завершено">Завершено</option>
+                </select>
+                <select id="filter-priority">
+                    <option value="">Все приоритеты</option>
+                    <option value="важное и срочное">важное и срочное</option>
+                    <option value="важное, но не срочное">важное, но не срочное</option>
+                    <option value="срочное, но неважное">срочное, но неважное</option>
+                    <option value="неважное и не срочное">неважное и не срочное</option>
+                </select>
+                <input type="date" id="filter-date" />
+                <select id="filter-due">
+                    <option value="all">Без сортировки</option>
+                    <option value="soonest">Скорее истекает срок</option>
+                    <option value="latest">Позже всего срок</option>
+                </select>
+                <button id="apply-filters">Применить фильтры</button>
+            </div>
+        </div>
+
+        <div class="task-list"></div>
+    </div>
+
+    <div id="modal" class="modal hidden">
+        <form id="task-form">
+            <input type="hidden" id="editing-id" value="" />
+
+            <div class="form-group">
+                <label for="task-title">Название задачи</label>
+                <input type="text" id="task-title" placeholder="Введите название задачи" required />
+                <small>Обязательное поле</small>
+            </div>
+
+            <div class="form-group">
+                <label for="task-desc">Описание</label>
+                <textarea id="task-desc" placeholder="Введите описание (необязательно)"></textarea>
+                <small>Краткое описание задачи</small>
+            </div>
+
+            <div class="form-group">
+                <label for="task-priority">Приоритет</label>
+                <select id="task-priority">
+                    <option value="важное и срочное">важное и срочное</option>
+                    <option value="важное, но не срочное">важное, но не срочное</option>
+                    <option value="срочное, но неважное">срочное, но неважное</option>
+                    <option value="неважное и не срочное">неважное и не срочное</option>
+                </select>
+                <small>Выберите уровень важности</small>
+            </div>
+
+            <div class="form-group">
+                <label for="task-due-date">Срок выполнения</label>
+                <input type="date" id="task-due-date" required />
+                <small>Дата должна быть в будущем</small>
+            </div>
+
+            <button type="submit">Сохранить</button>
+        </form>
+    </div>
+    <div id="overlay" class="overlay hidden"></div>
+
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
